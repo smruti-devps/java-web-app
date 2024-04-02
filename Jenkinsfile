@@ -1,23 +1,14 @@
-pipeline {
-    agent any
-    stages {
-        stage ('checkout code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/smruti-devps/java-web-app.git'
-            }
-            
-        }
-        stage ('buildcode code') {
-            steps {
-                sh '/opt/maven/bin/mvn clean package'
-            }
+node('any') {
+    stage ('checkout code') {
+        git branch: 'main', url: 'https://github.com/smruti-devps/java-web-app.git'
 
-        }
-        stage ('deploy to tomcat') {
-            steps {
-                deploy adapters:[tomcat9(url:'http://13.233.59.88:8080/', credentialsId:'tomcatcred')], war:'**/*.war'
-            }
+    }
+    stage ('build code') {
+        sh '/opt/maven/bin/mvn clean package'
 
-        }
+    }
+    stage ('deploy to tomcat') {
+        deploy adapters: [tomcat9(url:'http://13.233.145.63:8080/', credentialsId: 'tomcatcred')], war:'**/*.war'
+
     }
 }
