@@ -1,4 +1,4 @@
-node('any') {
+node {
     stage ('checkout code') {
         git branch: 'main', url: 'https://github.com/smruti-devps/java-web-app.git'
 
