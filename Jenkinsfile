@@ -13,8 +13,7 @@ pipeline {
         }
        stage('build code') {
            steps {
-            sh'/opt/maven/bin/mvn clean package'
-
+               sh '/opt/maven/bin/mvn clean package'
            }
        }  
     }
