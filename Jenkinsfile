@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            labels 'jenkins-slave-node'
+            label 'jenkins-slave-node'
         }
     }
     stages {
@@ -16,7 +16,6 @@ pipeline {
             sh'/opt/maven/bin/mvn clean package'
 
            }
-       } 
-      
+       }  
     }
 }
